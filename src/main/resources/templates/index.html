@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <title>易用——首页</title>
+    <link rel="stylesheet" th:href="@{css/common.css}" />
+    <link rel="stylesheet" th:href="@{css/index.css}" />
+    <link rel="stylesheet" th:href="@{css/jquery.easyfader.css}" />
+</head>
+<body>
+    <header>
+        <nav>
+                <ul class="clearfloat">
+                    <li>
+                        <div>易班</div>|易用
+                    </li>
+                    <li><a th:href="@{/index}">首页</a></li>
+                    <li><a href="#wensug">文具</a></li>
+                    <li><a href="#beisug">杯具</a></li>
+                    <li><a href="#chongsug">宠物</a></li>
+                    <li><a href="#diansug">电器</a></li>
+                    <li><a href="#xisug">洗护</a></li>
+                    <li><a href="#yinsug">饮食</a></li>
+                    <li><a href="#peisug">配件</a></li>
+                    <li><a href="#shousug">收纳</a></li>
+                    <li><a th:href="@{/rec}">我要推荐</a></li>
+                    <li>
+                        <form th:action="@{/search}" method="post" name="search">
+                            <input type="search" placeholder="搜你所想" name="keys"/>
+                            <input type="image" th:src="@{img/search.svg}" alt="Search"/>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
+        <div id="carousel" class="fader">
+            <img class="slide" th:src="@{img/slide1.jpg}" />
+            <img class="slide" th:src="@{img/slide2.jpg}" />
+            <img class="slide" th:src="@{img/slide3.jpg}" />
+            <div class="fader_controls">
+                <div class="page prev" data-target="prev">&lsaquo;</div>
+                <div class="page next" data-target="next">&rsaquo;</div>
+                <ul class="pager_list"></ul>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section id="editsug">
+            <h1>人气好物推荐，他们最受欢迎</h1>
+            <h2>-编辑推荐-</h2>
+            <ul>
+                <li th:each="thing,iterStat:${recs}">
+                    <ul>
+                        <li><img th:src="@{${thing.picPath}}"/></li>
+                        <li><a th:text="${thing.category}" href="">洗护</a></li>
+                        <li th:text="${thing.name}">4条装 中空纱华夫格毛巾</li>
+                        <li><span>&yen;</span><span th:text="${thing.lowP}">49.00</span><span>~&yen;</span><span th:text="${thing.highP}">50.00</span></li>
+                        <li><span th:text="${thing.desc}">可以放进嘴里的抗敏感毛巾</span></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section id="wensug">
+            <h1><img th:src="@{img/wenju.png}" alt="文具"/>文具</h1>
+            <h2>找回书写的力量</h2>
+            <ul>
+                <li th:each="thing,iterStat:${wen}">
+                    <ul>
+                        <li><img th:src="@{${thing.picPath}}"/></li>
+                        <li><a th:text="${thing.category}" href="">洗护</a></li>
+                        <li th:text="${thing.name}">4条装 中空纱华夫格毛巾</li>
+                        <li><span>&yen;<span th:text="${thing.lowP}">49.00</span>~&yen;<span th:text="${thing.highP}">50.00</span></span></li>
+                        <li><span th:text="${thing.desc}">可以放进嘴里的抗敏感毛巾</span></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section id="beisug">
+            <h1><img th:src="@{img/beiju.png}" alt="杯具"/>杯具</h1>
+            <h2>精工生产制作，匠人手艺</h2>
+            <ul>
+                <li th:each="thing,iterStat:${bei}">
+                    <ul>
+                        <li><img th:src="@{${thing.picPath}}"/></li>
+                        <li><a th:text="${thing.category}" href="">洗护</a></li>
+                        <li th:text="${thing.name}">4条装 中空纱华夫格毛巾</li>
+                        <li><span>&yen;</span><span th:text="${thing.lowP}">49.00</span><span>~&yen;</span><span th:text="${thing.highP}">50.00</span></li>
+                        <li><span th:text="${thing.desc}">可以放进嘴里的抗敏感毛巾</span></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section id="chongsug">
+            <h1><img th:src="@{img/chongwu.png}" alt="chongwu"/>宠物</h1>
+            <h2>抑菌除味，打造宠物舒适空间</h2>
+            <ul>
+                <li th:each="thing,iterStat:${chong}">
+                    <ul>
+                        <li><img th:src="@{${thing.picPath}}"/></li>
+                        <li><a th:text="${thing.category}" href="">洗护</a></li>
+                        <li th:text="${thing.name}">4条装 中空纱华夫格毛巾</li>
+                        <li><span>&yen;</span><span th:text="${thing.lowP}">49.00</span><span>~&yen;</span><span th:text="${thing.highP}">50.00</span></li>
+                        <li><span th:text="${thing.desc}">可以放进嘴里的抗敏感毛巾</span></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <section id="diansug">
+            <h1><img th:src="@{img/dianqi.png}" alt="电器"/>电器</h1>
+            <h2>智能硬件，省心生活</h2>
+            <ul>
+                <li th:each="thing,iterStat:${dian}">
+                    <ul>
+                        <li><img th:src="@{${thing.picPath}}"/></li>
+                        <li><a th:text="${thing.category}" href="">洗护</a></li>
+                        <li th:text="${thing.name}">4条装 中空纱华夫格毛巾</li>
+                        <li><span>&yen;</span><span th:text="${thing.lowP}">49.00</span><span>~&yen;</span><span th:text="${thing.highP}">50.00</span></li>
+                        <li><span th:text="${thing.desc}">可以放进嘴里的抗敏感毛巾</span></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section id="xisug">
+            <h1><img th:src="@{img/xihu.png}" alt="洗护"/>洗护</h1>
+            <h2>好看好用，舒心洗护</h2>
+            <ul>
+                <li th:each="thing,iterStat:${xi}">
+                    <ul>
+                        <li><img th:src="@{${thing.picPath}}"/></li>
+                        <li><a th:text="${thing.category}" href="">洗护</a></li>
+                        <li th:text="${thing.name}">4条装 中空纱华夫格毛巾</li>
+                        <li><span>&yen;</span><span th:text="${thing.lowP}">49.00</span><span>~&yen;</span><span th:text="${thing.highP}">50.00</span></li>
+                        <li><span th:text="${thing.desc}">可以放进嘴里的抗敏感毛巾</span></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section id="yinsug">
+            <h1><img th:src="@{img/yinshi.png}" alt="饮食"/>饮食</h1>
+            <h2>好看好吃，精致美食</h2>
+            <ul>
+                <li th:each="thing,iterStat:${yin}">
+                    <ul>
+                        <li><img th:src="@{${thing.picPath}}"/></li>
+                        <li><a th:text="${thing.category}" href="">洗护</a></li>
+                        <li th:text="${thing.name}">4条装 中空纱华夫格毛巾</li>
+                        <li><span>&yen;</span><span th:text="${thing.lowP}">49.00</span><span>~&yen;</span><span th:text="${thing.highP}">50.00</span></li>
+                        <li><span th:text="${thing.desc}">可以放进嘴里的抗敏感毛巾</span></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section id="peisug">
+            <h1><img th:src="@{img/peijian.png}" alt="配件"/>配件</h1>
+            <h2>好看好用，品味配件</h2>
+            <ul>
+                <li th:each="thing,iterStat:${pei}">
+                    <ul>
+                        <li><img th:src="@{${thing.picPath}}"/></li>
+                        <li><a th:text="${thing.category}" href="">洗护</a></li>
+                        <li th:text="${thing.name}">4条装 中空纱华夫格毛巾</li>
+                        <li><span>&yen;</span><span th:text="${thing.lowP}">49.00</span><span>~&yen;</span><span th:text="${thing.highP}">50.00</span></li>
+                        <li><span th:text="${thing.desc}">可以放进嘴里的抗敏感毛巾</span></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section id="shousug">
+            <h1><img th:src="@{img/shouna.png}" alt="收纳"/>收纳</h1>
+            <h2>独享品质，自在整理</h2>
+            <ul>
+                <li th:each="thing,iterStat:${shou}">
+                    <ul>
+                        <li><img th:src="@{${thing.picPath}}"/></li>
+                        <li><a th:text="${thing.category}" href="">洗护</a></li>
+                        <li th:text="${thing.name}">4条装 中空纱华夫格毛巾</li>
+                        <li><span>&yen;</span><span th:text="${thing.lowP}">49.00</span><span>~&yen;</span><span th:text="${thing.highP}">50.00</span></li>
+                        <li><span th:text="${thing.desc}">可以放进嘴里的抗敏感毛巾</span></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <div><img src="http://7xvl82.com1.z0.glb.clouddn.com/logo1.png"/></div>
+        <ul class="clearfloat">
+            <li><a href="http://www.swpu.edu.cn/" target="_Blank">校园网</a></li>
+            <li><a href="http://xg.swpu.edu.cn/WebSite/WebNews/Default.html" target="_Blank">学工部</a></li>
+            <li> <a href="http://tw.swpu.edu.cn/" target="_Blank">校团委</a></li>
+            <li><a href="http://zsjy.swpu.edu.cn/" target="_Blank">招就处</a></li>
+            <li><a href="http://jwc.swpu.edu.cn/" target="_Blank">教务处</a></li>
+            <li><a href="http://www.yiban.cn/" target="_Blank">易班</a></li>
+        </ul>
+        <p>Copyright&copy;2017 SWPU.YIBAN. All Rights Reserved.@zhoucheng&amp;&amp;liwenfei</p>
+    </footer>
+
+    <script th:src="@{js/jquery-3.1.1.min.js}"></script>
+    <script th:src="@{js/jquery.easyfader.min.js}"></script>
+    <script>
+        $(function(){
+                $('#carousel').easyFader();
+        })
+    </script>
+</body>
+</html>

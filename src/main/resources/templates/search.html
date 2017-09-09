@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>易用——搜索</title>
+    <link rel="stylesheet" th:href="@{css/common.css}" />
+    <link rel="stylesheet" th:href="@{css/search.css}" />
+</head>
+<body>
+<header>
+    <nav>
+        <ul class="clearfloat">
+            <li>
+                <div>易班</div>|易用
+            </li>
+            <li><a th:href="@{/index}">首页</a></li>
+            <li><a th:href="@{/redir/wensug}">文具</a></li>
+            <li><a th:href="@{/redir/beisug}">杯具</a></li>
+            <li><a th:href="@{/redir/chongsug}">宠物</a></li>
+            <li><a th:href="@{/redir/diansug}">电器</a></li>
+            <li><a th:href="@{/redir/xisug}">洗护</a></li>
+            <li><a th:href="@{/redir/yinsug}">饮食</a></li>
+            <li><a th:href="@{/redir/peisug}">配件</a></li>
+            <li><a th:href="@{/redir/shousug}">收纳</a></li>
+            <li><a th:href="@{/rec}">我要推荐</a></li>
+            <li>
+                <form th:action="@{/search}" method="post" name="search">
+                    <input type="search" placeholder="搜你所想" name="keys"/>
+                    <input type="image" th:src="@{img/search.svg}" alt="Search"/>
+                </form>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <section>
+        <span>-What You Want-</span>
+        <ul>
+            <li th:each="thing,iterStat:${things}">
+                <ul>
+                    <li><img th:src="@{${thing.picPath}}"/></li>
+                    <li><a th:text="${thing.category}" href="">洗护</a></li>
+                    <li th:text="${thing.name}">4条装 中空纱华夫格毛巾</li>
+                    <li><span>&yen;</span><span th:text="${thing.lowP}">49.00</span><span>~&yen;</span><span th:text="${thing.highP}">50.00</span></li>
+                    <li><span th:text="${thing.desc}">可以放进嘴里的抗敏感毛巾</span></li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+</main>
+<footer>
+    <div><img src="http://7xvl82.com1.z0.glb.clouddn.com/logo1.png"/></div>
+    <ul class="clearfloat">
+        <li><a href="http://www.swpu.edu.cn/" target="_Blank">校园网</a></li>
+        <li><a href="http://xg.swpu.edu.cn/WebSite/WebNews/Default.html" target="_Blank">学工部</a></li>
+        <li> <a href="http://tw.swpu.edu.cn/" target="_Blank">校团委</a></li>
+        <li><a href="http://zsjy.swpu.edu.cn/" target="_Blank">招就处</a></li>
+        <li><a href="http://jwc.swpu.edu.cn/" target="_Blank">教务处</a></li>
+        <li><a href="http://www.yiban.cn/" target="_Blank">易班</a></li>
+    </ul>
+    <p>Copyright&copy;2017 SWPU.YIBAN. All Rights Reserved.@zhoucheng&amp;&amp;liwenfei</p>
+</footer>
+
+
+</body>
+</html>

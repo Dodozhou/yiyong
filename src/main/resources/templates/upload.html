@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>易用——推荐物品</title>
+    <link rel="stylesheet" th:href="@{css/common.css}" />
+    <link rel="stylesheet" th:href="@{css/upload.css}" />
+    <link rel="stylesheet" th:href="@{css/jquery.range.css}"/>
+</head>
+<body>
+<header>
+    <nav>
+        <ul class="clearfloat">
+            <li>
+                <div>易班</div>|易用
+            </li>
+            <li><a th:href="@{/index}">首页</a></li>
+            <li><a th:href="@{/redir/wensug}">文具</a></li>
+            <li><a th:href="@{/redir/beisug}">杯具</a></li>
+            <li><a th:href="@{/redir/chongsug}">宠物</a></li>
+            <li><a th:href="@{/redir/diansug}">电器</a></li>
+            <li><a th:href="@{/redir/xisug}">洗护</a></li>
+            <li><a th:href="@{/redir/yinsug}">饮食</a></li>
+            <li><a th:href="@{/redir/peisug}">配件</a></li>
+            <li><a th:href="@{/redir/shousug}">收纳</a></li>
+            <li><a th:href="@{/rec}">我要推荐</a></li>
+            <li>
+                <form th:action="@{/search}" method="post" name="search">
+                    <input type="search" placeholder="搜你所想" name="keys"/>
+                    <input type="image" th:src="@{img/search.svg}" alt="Search"/>
+                </form>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <section>
+        <h1>What would you recommend</h1>
+        <h2>-倾心推荐-</h2>
+        <form th:object="${rec}" name="recommend" th:action="@{/upload}" method="post" enctype="multipart/form-data">
+            <ul id="seekinfo">
+                <li><span th:text="${error}" style="color: red"></span></li>
+                <li>
+                    <label><span>*</span>名称：</label>
+                    <input type="text" th:field="*{name}" placeholder="请输入推荐物品名称"/>
+                    <div class="tip">
+
+                    </div>
+                </li>
+                <li>
+                    <label><span>*</span>类别：</label>
+                    <select id="classselect" th:field="*{category}">
+                        <option value="文具">文具</option>
+                        <option value="杯具">杯具</option>
+                        <option value="宠物">宠物</option>
+                        <option value="电器">电器</option>
+                        <option value="洗护">洗护</option>
+                        <option value="饮食">饮食</option>
+                        <option value="配件">配件</option>
+                        <option value="收纳">收纳</option>
+                    </select>
+                    <div class="tip">
+
+                    </div>
+                </li>
+                <li>
+                    <label><span>*</span>价位：</label>
+                    <span>&yen;</span><input type="text" th:field="*{lowP}" id="money1"/><span>——&yen;</span><input type="text" th:field="*{highP}" id="money2"/>
+
+                    <!--<input type="hidden" class="slider-input" value="50,100" />-->
+                    <div class="tip">
+                    </div>
+                </li>
+                <li>
+                    <label><span>*</span>描述：</label>
+                    <input type="text" th:field="*{desc}" placeholder="请输入物品描述"/>
+                    <div class="tip">
+
+                    </div>
+                </li>
+                <li>
+                    <label><span>*</span>图片：</label>
+                    <div id="imgdisplay">
+                        <img th:src="@{img/goods.png}" alt="物品"/>
+                    </div>
+                    <label for="file"><span id="upclick">点击上传</span></label>
+                    <input type="file" id="file"  name="pic"  style="display: none;"/>
+                </li>
+            </ul>
+            <div id="upbtn">
+                <input type="submit" value="上传"/>
+            </div>
+        </form>
+    </section>
+</main>
+<footer>
+    <div><img src="http://7xvl82.com1.z0.glb.clouddn.com/logo1.png"/></div>
+    <ul class="clearfloat">
+        <li><a href="http://www.swpu.edu.cn/" target="_Blank">校园网</a></li>
+        <li><a href="http://xg.swpu.edu.cn/WebSite/WebNews/Default.html" target="_Blank">学工部</a></li>
+        <li> <a href="http://tw.swpu.edu.cn/" target="_Blank">校团委</a></li>
+        <li><a href="http://zsjy.swpu.edu.cn/" target="_Blank">招就处</a></li>
+        <li><a href="http://jwc.swpu.edu.cn/" target="_Blank">教务处</a></li>
+        <li><a href="http://www.yiban.cn/" target="_Blank">易班</a></li>
+    </ul>
+    <p>Copyright&copy;2017 SWPU.YIBAN. All Rights Reserved.@zhoucheng&amp;&amp;liwenfei</p>
+</footer>
+<script th:src="@{js/jquery-3.1.1.min.js}"></script>
+<script th:src="@{js/jquery.range.js}"></script>
+<script th:src="@{js/upload.js}"></script>
+<script>
+    $(document).ready(function(){
+        $('.range-slider').jRange({
+            from: 0,
+            to: 500,
+            step: 1,
+            scale: [0,175,250,375,500],
+            format:'%s'+'元',
+            width: 300,
+            showLabels: true,
+            isRange : true
+        });
+    })
+</script>
+
+</body>
+</html>

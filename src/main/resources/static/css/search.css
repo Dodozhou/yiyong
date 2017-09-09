@@ -1,0 +1,11 @@
+main{
+    min-width:1155px;
+}
+main>section{
+    margin:10px 1%;
+    padding:5%;
+}
+main>section>span{
+    font-size:0.9em;
+    color: #BB9656;
+}
